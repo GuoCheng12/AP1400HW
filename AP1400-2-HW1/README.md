@@ -34,6 +34,7 @@ implement this function so that it will create a `n x m`  matrix with all elemen
 
  - **random**
 	implement this function so that it will create a `n x m`  matrix with all elements a random number between `min` and `max`.
+	
 	```cpp
 	Matrix random(size_t n, size_t m, double min, double max)
 	```
@@ -42,6 +43,7 @@ implement this function so that it will create a `n x m`  matrix with all elemen
 
 - **show**
   implement this function so that it will display the matrix in a beautiful way.
+  
     ```cpp
     void show(const Matrix& matrix)
     ```
@@ -98,16 +100,18 @@ implement this function so that it will create the minor of the input `matrix` w
 
 - **determinant**
 	implement this function so that it calculates the determinant of the input `matrix`. 
+  
     ```cpp
     double determinant(const Matrix& matrix)
     ```
-    *you should only use the minor approach to calculate the determinant, any other methods (such as upper-triangular or ...) is not allowed.*
+	  *you should only use the minor approach to calculate the determinant, any other methods (such as upper-triangular or ...) is not allowed.*
 	
 - **inverse**
-implement this function so that it generates the `matrix`'s inverse. 
-	```cpp
-	Matrix inverse(const Matrix& matrix)
-	```
+  implement this function so that it generates the `matrix`'s inverse. 
+
+  ```cpp
+  Matrix inverse(const Matrix& matrix)
+  ```
 
 - **concatenate**
 	implement this function so that it will concatenate `matrix1` and `matrix2` along the specified axis. (`axis=0`: on top of each other | `axis=1`: alongside each other). 
