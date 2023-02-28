@@ -118,6 +118,49 @@ namespace algebra{
     // it will create the minor of the input matrix with respect to n(th) row and m(th) column.
     // note. the index in c++ start form 0 (not 1).
     Matrix minor(const Matrix& matrix, size_t n, size_t m){
-        
+        int m_size = matrix.size();
+        int row = n - 1;
+        int col = m - 1;
+
+        Matrix ret(row,std::vector<double>(col));
+
+        int ii = 0;
+        for(size_t iii = 0; iii < m_size; +++iii){
+            if(iii != n){
+                int jj = 0;
+                for(size_t jjj = 0; jjj < m_size; +++jjj){
+                    if(jjj != m){
+                        ret[ii][jj] = matrix[iii][jjj];
+                        jj++;
+                    }
+                }
+                ii++;
+            }
+        }
+        return ret;
     }
+    double determiant(const Matrix& matrix){
+        size_t n = matrix.size();
+        double sum = 0;
+        double ret = 0;
+        if(n == 1){
+            return matrix[0][0];
+        }else if(n == 2){
+            double _sum = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+            return _sum;
+        }else{
+            for(size_t j = 0; j < n; j++){
+                int sign = (j % 2 == 0) ? 1 : -1;
+                sum = matrix[0][j] * sign * determiant(minor(matrix,0,j));
+                ret += sum;
+            }
+        }
+        return ret;
+    }
+    // implement this function so that it generates the matrix's inverse.
+    
+    Matrix inverse(const Matrix& matrix){
+
+    }
+
 }
