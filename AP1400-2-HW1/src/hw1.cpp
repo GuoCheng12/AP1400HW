@@ -114,6 +114,7 @@ namespace algebra{
         }
         return ret;
     }
+
     // implement this function so that 
     // it will create the minor of the input matrix with respect to n(th) row and m(th) column.
     // note. the index in c++ start form 0 (not 1).
@@ -139,6 +140,8 @@ namespace algebra{
         }
         return ret;
     }
+
+    // implement this function so that it calculates the determiant of the input matrix.
     double determiant(const Matrix& matrix){
         size_t n = matrix.size();
         double sum = 0;
@@ -157,10 +160,24 @@ namespace algebra{
         }
         return ret;
     }
-    // implement this function so that it generates the matrix's inverse.
-    
-    Matrix inverse(const Matrix& matrix){
 
+    // implement this function so that it generates the matrix's inverse.
+    Matrix inverse(const Matrix& matrix){
+        double det = determiant(matrix);
+        if(det == 0){
+            throw("The determinant is equal to 0 and there is no inverse matrix");
+        }
+        size_t n = matrix.size();
+        Matrix ret(n,std::vector<double>(n));
+        for(size_t i = 0; i < n; ++i){
+            for(size_t j = 0; j < n; ++j){
+                double sign = (i + j) % 2 == 0 ? 1.0 : -1.0;
+                double element = determiant(minor(matrix,i,j));
+                element *= sign;
+                ret[j][i] = element;
+            }
+        }
+        return ret;
     }
 
 }
